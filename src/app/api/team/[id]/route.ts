@@ -85,7 +85,28 @@ export async function GET(
   }
 }
 
-// 2. Ажилтны мэдээллийг шинэчлэх
+export async function DELETE(
+  request: Request,
+  { params }: { params: { id: string } },
+) {
+  try {
+    await prisma.teamMember.delete({
+      where: { id: params.id },
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: "Member deleted successfully",
+    });
+  } catch (error) {
+    console.error("DELETE Error:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to delete member" },
+      { status: 500 },
+    );
+  }
+}
+
 export async function PUT(
   request: Request,
   { params }: { params: { id: string } },
