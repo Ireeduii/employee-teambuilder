@@ -4,5 +4,23 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url
+}
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  name      String
+  email     String?
+  role      String
+  skills    String[]
+  status    String   @default("Active")
+  avatarUrl String
+  createdAt DateTime @default(now())
+}
+
+model Metric {
+  id         String  @id @default(uuid())
+  title      String
+  value      String
+  change     String
+  isPositive Boolean  @default(true)
 }

@@ -19,3 +19,10 @@ export interface StatMetric {
   change: string;
   isPositive: boolean;
 }
+
+// backend api-s butsah standart format
+export interface ApiResponse<T> {
+  success: boolean;
+  message: string;
+  data: T;
+}
