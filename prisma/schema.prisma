@@ -11,9 +11,11 @@ model TeamMember {
   name      String
   email     String?
   role      String
+  department String?
+  bio       String?
   skills    String[]
   status    String   @default("Active")
-  avatarUrl String
+  avatarUrl String?
   createdAt DateTime @default(now())
 }
 
