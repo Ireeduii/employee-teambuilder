@@ -36,7 +36,8 @@ export async function GET() {
   try {
     const teamMembers = await prisma.teamMember.findMany();
     return NextResponse.json({ success: true, data: teamMembers });
-  } catch (error) {
+  } catch (err) {
+    console.error(err);
     return NextResponse.json(
       { success: false, error: "Failed to fetch" },
       { status: 500 },
@@ -69,8 +70,8 @@ export async function POST(request: Request) {
       { success: true, data: newMember },
       { status: 201 },
     );
-  } catch (error) {
-    console.error("POST error:", error);
+  } catch (err) {
+    console.error("POST error:", err);
     return NextResponse.json(
       { success: false, error: "Failed to create member" },
       { status: 500 },

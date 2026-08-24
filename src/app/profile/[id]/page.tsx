@@ -312,8 +312,8 @@ export default function ProfilePage({
           const json = await res.json();
           setProfile(json.data);
         }
-      } catch (error) {
-        console.error("Profile fetch failed:", error);
+      } catch (err) {
+        console.error("Profile fetch failed:", err);
       } finally {
         setLoading(false);
       }
@@ -360,8 +360,8 @@ export default function ProfilePage({
       } else {
         alert("Хадгалахад алдаа гарлаа.");
       }
-    } catch (error) {
-      console.error("Save error:", error);
+    } catch (err) {
+      console.error("Save error:", err);
     } finally {
       setSaving(false);
     }

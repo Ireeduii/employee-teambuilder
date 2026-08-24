@@ -91,8 +91,8 @@ export function AddMemberModal({
       } else {
         alert("Нэмэхэд алдаа гарлаа!");
       }
-    } catch (error) {
-      console.error("Error creating member:", error);
+    } catch (err) {
+      console.error("Error creating member:", err);
     } finally {
       setLoading(false);
     }

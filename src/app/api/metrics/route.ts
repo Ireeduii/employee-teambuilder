@@ -18,8 +18,9 @@ export async function GET() {
       },
       { status: 200 },
     );
-  } catch (error) {
+  } catch (err) {
     //  database holbogdoogu uyd c mockData 200 statustai butsaaj turshina
+    console.error(err);
     return NextResponse.json(
       {
         success: true,

@@ -231,8 +231,8 @@ export default function Home() {
         const teamJson = await teamRes.json();
         setMembers(teamJson.data || []);
       }
-    } catch (error) {
-      console.error("Data fetch error:", error);
+    } catch (err) {
+      console.error("Data fetch error:", err);
     } finally {
       setLoading(false);
     }
