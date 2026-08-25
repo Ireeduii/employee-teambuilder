@@ -4,19 +4,23 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+
 }
 
 model TeamMember {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  role      String
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  role       String
   department String?
-  bio       String?
-  skills    String[]
-  status    String   @default("Active")
-  avatarUrl String?
-  createdAt DateTime @default(now())
+  bio        String?
+  skills     String[]
+  status     String   @default("Active")
+  avatarUrl  String?
+  createdAt  DateTime @default(now())
+
+  teamId     String?
+  team       Team?    @relation(fields: [teamId], references: [id])
 }
 
 model Metric {
@@ -24,5 +28,13 @@ model Metric {
   title      String
   value      String
   change     String
-  isPositive Boolean  @default(true)
+  isPositive Boolean @default(true)
+}
+
+model Team {
+  id         String       @id @default(cuid())
+  name       String
+  ownerEmail String
+  members    TeamMember[]
+  createdAt  DateTime     @default(now())
 }
