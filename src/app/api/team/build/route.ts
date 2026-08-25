@@ -23,7 +23,9 @@
 //       );
 //     }
 
-//     const newTeam = await prisma.team.create({
+//     const db = prisma as Record<string, any>;
+
+//     const newTeam = await db.team.create({
 //       data: {
 //         name: teamName || "Миний баг",
 //         ownerEmail: ownerEmail,
@@ -62,7 +64,11 @@ export async function POST(request: Request) {
       );
     }
 
-    const { teamName, memberIds } = await request.json();
+    const body = (await request.json()) as {
+      teamName?: string;
+      memberIds?: string[];
+    };
+    const { teamName, memberIds } = body;
 
     if (!memberIds || memberIds.length === 0) {
       return NextResponse.json(
@@ -71,15 +77,12 @@ export async function POST(request: Request) {
       );
     }
 
-    // Prisma-ийн dynamic call ашиглаж type check-ийг тойрох
-    const db = prisma as Record<string, any>;
-
-    const newTeam = await db.team.create({
+    const newTeam = await prisma.team.create({
       data: {
         name: teamName || "Миний баг",
         ownerEmail: ownerEmail,
         members: {
-          connect: memberIds.map((id: string) => ({ id })),
+          connect: memberIds.map((id) => ({ id })),
         },
       },
       include: {
@@ -88,7 +91,7 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({ data: newTeam });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Team creation error:", error);
     return NextResponse.json(
       { error: "Баг үүсгэхэд алдаа гарлаа" },
