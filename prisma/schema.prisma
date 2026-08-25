@@ -9,7 +9,7 @@ datasource db {
 model TeamMember {
   id        String   @id @default(uuid())
   name      String
-  email     String?
+  email     String   @unique
   role      String
   department String?
   bio       String?

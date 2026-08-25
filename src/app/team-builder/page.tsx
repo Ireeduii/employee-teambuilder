@@ -53,7 +53,6 @@ export default function TeamBuilderPage() {
     );
   });
 
-  // Багт ажилтан нэмэх/хасах
   const toggleSelectMember = (member: TeamMember) => {
     if (selectedMembers.some((m) => m.id === member.id)) {
       setSelectedMembers(selectedMembers.filter((m) => m.id !== member.id));
