@@ -37,7 +37,6 @@ export async function GET(request: Request) {
   }
 
   try {
-    // findUnique-ийн оронд findFirst ашиглана
     const user = await prisma.teamMember.findFirst({
       where: { email: email },
     });
@@ -47,7 +46,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json({ data: user });
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ error: "Серверийн алдаа" }, { status: 500 });
   }
 }
