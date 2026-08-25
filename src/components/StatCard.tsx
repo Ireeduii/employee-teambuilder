@@ -4,7 +4,6 @@
 import React from "react";
 import { StatMetric } from "../types/dashboard";
 
-// Component Props-ийн тип зааж өгнө
 interface StatCardProps {
   metric: StatMetric;
 }

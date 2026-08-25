@@ -1,50 +1,3 @@
-// "use client";
-
-// import React, { useState } from "react";
-
-// interface AddMemberModalProps {
-//   isOpen: boolean;
-//   onClose: () => void;
-//   onAddMember: (member: {
-//     name: string;
-//     email: string;
-//     role: string;
-//     skills: string[];
-//     status: "Active" | "On Leave" | "Busy";
-//     avatarUrl: string;
-//     department: string; // Added department property
-//   }) => void;
-// }
-
-// export default function AddMemberModal({
-//   isOpen,
-//   onClose,
-//   onAddMember,
-//   onSuccess,
-// }: AddMemberModalProps) {
-//   const [name, setName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [role, setRole] = useState("");
-//   const [skills, setSkills] = useState("");
-//   const [status, setStatus] = useState<"Active" | "On Leave" | "Busy">("Active");
-//   const [avatarUrl, setAvatarUrl] = useState("");
-//   const [department, setDepartment] = useState(""); // Added department state
-
-//   if (!isOpen) return null;
-//   const handleSubmit = async (e: React.FormEvent) => {
-//     e.preventDefault();
-//     const newMember = {
-//       name,
-//       email,
-//       role,
-//       skills: skills.split(",").map((skill) => skill.trim()),
-//       status,
-//       avatarUrl,
-//       department, // Include department in the new member object
-//     };
-// }
-
-// src/components/AddMemberModal.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -52,7 +5,7 @@ import React, { useState } from "react";
 interface AddMemberModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSuccess: () => void; // Дата нэмэгдсэний дараа жагсаалтыг шинэчлэх функц
+  onSuccess: () => void;
 }
 
 export function AddMemberModal({
@@ -72,7 +25,6 @@ export function AddMemberModal({
     setLoading(true);
 
     try {
-      // Бэкэнд рүү POST хүсэлт илгээх
       const res = await fetch("/api/team", {
         method: "POST",
         headers: {
@@ -82,11 +34,10 @@ export function AddMemberModal({
       });
 
       if (res.ok) {
-        // Амжилттай болбол формаа цэвэрлээд, модалаа хаана
         setName("");
         setRole("");
         setDepartment("");
-        onSuccess(); // Үндсэн нүүрний датаг шинэчлэн уншина
+        onSuccess();
         onClose();
       } else {
         alert("Нэмэхэд алдаа гарлаа!");
