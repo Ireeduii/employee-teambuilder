@@ -117,8 +117,8 @@
 import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Mail, Building2, User } from "lucide-react";
-import { Sidebar } from "@/components/Sidebar";
-import { Header } from "@/components/Header";
+import { Sidebar } from "@/components/main/Sidebar";
+import { Header } from "@/components/main/Header";
 
 // Member-ийн тип зааж өгөх интерфейс
 interface Member {

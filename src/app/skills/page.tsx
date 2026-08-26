@@ -186,8 +186,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Sidebar } from "@/components/Sidebar";
-import { Header } from "@/components/Header";
+import { Sidebar } from "@/components/main/Sidebar";
+import { Header } from "@/components/main/Header";
 import { TeamMember } from "@/types/dashboard";
 import { Code2, Users, Award } from "lucide-react";
 

@@ -297,8 +297,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation"; // 1. useRouter импортлох
-import { Sidebar } from "@/components/Sidebar";
-import { Header } from "@/components/Header";
+import { Sidebar } from "@/components/main/Sidebar";
+import { Header } from "@/components/main/Header";
 import { TeamMember } from "@/types/dashboard";
 import {
   Plus,

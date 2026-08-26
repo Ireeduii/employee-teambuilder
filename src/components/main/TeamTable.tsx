@@ -96,18 +96,12 @@ export const TeamTable: React.FC<TeamTableProps> = ({
                     href={`/profile/${m.id}`}
                     className="flex items-center gap-3 group/item cursor-pointer"
                   >
-                    {/* <img
+                    <img
                       src={m.avatarUrl || "https://via.placeholder.com/150"}
                       alt={m.name}
-                      className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100"
-                    /> */}
-                    <Image
-                      src={m.avatarUrl || "https://via.placeholder.com/150"}
-                      alt={m.name}
-                      width={36}
-                      height={36}
                       className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100"
                     />
+                
                     <div>
                       <p className="font-semibold text-slate-800 group-hover/item:text-cyan-600 transition-colors">
                         {m.name}

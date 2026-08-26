@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import { StatMetric } from "../types/dashboard";
+import { StatMetric } from "@/types/dashboard";
 
 interface StatCardProps {
   metric: StatMetric;

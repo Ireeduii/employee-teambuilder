@@ -1,34 +1,3 @@
-// import { NextResponse } from "next/server";
-// import { prisma } from "@/lib/prisma";
-// import { mockTeamMembers } from "@/mock/mockData";
-
-// // buh gishuudin jagsaaltig butsaah api
-// export async function GET() {
-//   try {
-//     const members = await prisma.teamMember.findMany();
-
-//     const dataToSend = members.length > 0 ? members : mockTeamMembers;
-
-//     return NextResponse.json(
-//       {
-//         success: true,
-//         message: "Bagiin medeelel amjilttai tatagdlaa",
-//         data: dataToSend,
-//       },
-//       { status: 200 },
-//     );
-//   } catch (error) {
-//     return NextResponse.json(
-//       {
-//         success: true,
-//         message: "Mock data butsaaj bn",
-//         data: mockTeamMembers,
-//       },
-//       { status: 200 },
-//     );
-//   }
-// }
-
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 

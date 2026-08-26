@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
-import { Sidebar } from "@/components/Sidebar";
-import { Header } from "@/components/Header";
+import { Sidebar } from "@/components/main/Sidebar";
+import { Header } from "@/components/main/Header";
 
 export default function MyProfilePage() {
   const { user, isLoaded } = useUser();

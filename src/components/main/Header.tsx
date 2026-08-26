@@ -159,7 +159,7 @@
 
 import React from "react";
 import { Search, Bell } from "lucide-react";
-import { ModeToggle } from "./mode-toggle";
+import { ModeToggle } from "../theme/mode-toggle";
 import { useUser, UserButton, SignInButton } from "@clerk/nextjs";
 
 export const Header = () => {

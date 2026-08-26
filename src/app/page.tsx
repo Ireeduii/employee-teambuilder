@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Sidebar } from "../components/Sidebar";
-import { Header } from "../components/Header";
-import { StatCard } from "../components/StatCard";
-import { TeamTable } from "../components/TeamTable";
-import { AddMemberModal } from "../components/AddMemberModal";
+import { Sidebar } from "../components/main/Sidebar";
+import { Header } from "../components/main/Header";
+
+import { StatCard } from "@/components/main/StatCard";
+import { TeamTable } from "../components/main/TeamTable";
+import { AddMemberModal } from "../components/main/AddMemberModal";
 import { StatMetric, TeamMember } from "../types/dashboard";
 
 export default function Home() {
