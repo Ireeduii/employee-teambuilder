@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { TeamMember } from "@/types/dashboard";
@@ -22,45 +21,33 @@ export const TeamTable: React.FC<TeamTableProps> = ({
     setMemberList(initialMembers);
   }, [initialMembers]);
 
-  // const filteredMembers = memberList.filter((member) => {
-  //   const matchesSearch =
-  //     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //     member.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  //     member.skills?.some((s) =>
-  //       s.toLowerCase().includes(searchTerm.toLowerCase()),
-  //     );
-
-  //   const matchesStatus =
-  //     statusFilter === "All" || member.status === statusFilter;
-
-  //   return matchesSearch && matchesStatus;
-  // });
-
-  // const handleDelete = async (id: string) => {
-  //   try {
-  //     const res = await fetch(`/api/team/${id}`, { method: "DELETE" });
-  //     if (res.ok) {
-  //       setMemberList((prev) => prev.filter((m) => m.id !== id));
-  //       if (onDeleteSuccess) onDeleteSuccess();
-  //     }
-  //   } catch (err) {
-  //     console.error("Delete error:", err);
-  //   }
   const filteredMembers = memberList.filter((member) => {
-    // null/undefined байж магадгүй тул аюулгүй байдлаар шалгах
-    const nameMatch = member.name?.toLowerCase().includes(searchTerm.toLowerCase()) || false;
-    const roleMatch = member.role?.toLowerCase().includes(searchTerm.toLowerCase()) || false;
-    const skillsMatch = member.skills?.some((s) =>
-      s.toLowerCase().includes(searchTerm.toLowerCase()),
-    ) || false;
+    const nameMatch =
+      member.name?.toLowerCase().includes(searchTerm.toLowerCase()) || false;
+    const roleMatch =
+      member.role?.toLowerCase().includes(searchTerm.toLowerCase()) || false;
+    const skillsMatch =
+      member.skills?.some((s) =>
+        s.toLowerCase().includes(searchTerm.toLowerCase()),
+      ) || false;
 
     const matchesSearch = nameMatch || roleMatch || skillsMatch;
-
     const matchesStatus =
       statusFilter === "All" || member.status === statusFilter;
 
     return matchesSearch && matchesStatus;
   });
+
+  const handleDelete = async (id: string) => {
+    try {
+      const res = await fetch(`/api/team/${id}`, { method: "DELETE" });
+      if (res.ok) {
+        setMemberList((prev) => prev.filter((m) => m.id !== id));
+        if (onDeleteSuccess) onDeleteSuccess();
+      }
+    } catch (err) {
+      console.error("Delete error:", err);
+    }
   };
 
   return (
@@ -126,7 +113,7 @@ export const TeamTable: React.FC<TeamTableProps> = ({
                   </Link>
                 </td>
                 <td className="py-3.5 px-4 text-slate-600 font-medium">
-                  {m.role}
+                  {m.role || "-"}
                 </td>
                 <td className="py-3.5 px-4">
                   <div className="flex flex-wrap gap-1.5">
