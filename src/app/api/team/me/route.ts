@@ -14,9 +14,7 @@
 // //       );
 // //     }
 
-// //     const db = prisma as Record<string, any>;
-
-// //     const team = await db.team.findFirst({
+// //     const team = await prisma.team.findFirst({
 // //       where: { ownerEmail: email },
 // //       orderBy: { createdAt: "desc" },
 // //       include: { members: true },
@@ -27,7 +25,7 @@
 // //     }
 
 // //     return NextResponse.json({ data: team.members });
-// //   } catch (error) {
+// //   } catch (error: unknown) {
 // //     console.error("GET team error:", error);
 // //     return NextResponse.json(
 // //       { error: "Серверийн алдаа гарлаа" },
@@ -35,7 +33,6 @@
 // //     );
 // //   }
 // // }
-
 // import { currentUser } from "@clerk/nextjs/server";
 // import { NextResponse } from "next/server";
 // import { prisma } from "@/lib/prisma";
@@ -52,20 +49,19 @@
 //       );
 //     }
 
-//     const db = prisma as Record<string, any>;
-
-//     const team = await db.team.findFirst({
+//     const team = await prisma.team.findFirst({
 //       where: { ownerEmail: email },
 //       orderBy: { createdAt: "desc" },
 //       include: { members: true },
 //     });
 
 //     if (!team) {
-//       return NextResponse.json({ data: [] });
+//       return NextResponse.json({ data: null });
 //     }
 
-//     return NextResponse.json({ data: team.members });
-//   } catch (error) {
+//     // Зөвхөн гишүүд биш багийн бүтэн объектоор нь буцаана
+//     return NextResponse.json({ data: team });
+//   } catch (error: unknown) {
 //     console.error("GET team error:", error);
 //     return NextResponse.json(
 //       { error: "Серверийн алдаа гарлаа" },
@@ -73,7 +69,6 @@
 //     );
 //   }
 // }
-
 import { currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
@@ -90,19 +85,16 @@ export async function GET() {
       );
     }
 
-    const team = await prisma.team.findFirst({
+    // Бүх багуудыг хамгийн сүүлд үүсгэсэн нь эхэндээ байхаар шүүнэ
+    const teams = await prisma.team.findMany({
       where: { ownerEmail: email },
       orderBy: { createdAt: "desc" },
       include: { members: true },
     });
 
-    if (!team) {
-      return NextResponse.json({ data: [] });
-    }
-
-    return NextResponse.json({ data: team.members });
+    return NextResponse.json({ data: teams });
   } catch (error: unknown) {
-    console.error("GET team error:", error);
+    console.error("GET teams error:", error);
     return NextResponse.json(
       { error: "Серверийн алдаа гарлаа" },
       { status: 500 },
