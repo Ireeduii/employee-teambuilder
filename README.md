@@ -3,8 +3,8 @@ Modern web application for mapping employee skills, tracking engineering metrics
 
 ## Tech Stack
   * Framework: Next.js(app router)
-  * Language: TypeScripts
-  * Styping: Tailwind CSS
+  * Language: TypeScript
+  * Styling: Tailwind CSS
   * Database & ORM: PostgreSQL, Prisma ORM
   * Authentication: Clerk Auth
 
@@ -15,5 +15,5 @@ Modern web application for mapping employee skills, tracking engineering metrics
   * Authentication: Secure user sessions and protected routes via Clerk.
   * Dark/Light Mode: Built-in theme switcher.
 ## Getting started
-   * git clone [https://github.com/Ireeduii/your-repo-name.git](https://github.com/Ireeduii/your-repo-name.git)
-   * cd your-repo-name
+  *https://github.com/Ireeduii/employee-teambuilder.git   
+  * cd-teambuilder
