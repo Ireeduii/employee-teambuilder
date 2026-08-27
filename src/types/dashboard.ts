@@ -5,7 +5,12 @@ export interface TeamMember {
   id: string;
   name: string;
   email: string;
-  role: string;
+  role: string | null;
+  department: string | null;
+  phone: string | null;
+  bio: string | null;
+  github: string | null;
+  location: string | null;
   skills: string[];
   status: "Active" | "On Leave" | "Busy";
   avatarUrl: string;

@@ -52,6 +52,42 @@ export async function DELETE(
   }
 }
 
+// export async function PATCH(
+//   request: Request,
+//   { params }: { params: Promise<{ id: string }> },
+// ) {
+//   try {
+//     const { id } = await params;
+//     const body = await request.json();
+//     const { name, role, department, phone, bio, github, location } = body;
+
+//     const updatedMember = await prisma.teamMember.update({
+//       where: { id },
+//       data: {
+//         name,
+//         role,
+//         department,
+//         phone,
+//         bio,
+//         github,
+//         location,
+//       },
+//     });
+
+//     return NextResponse.json({
+//       success: true,
+//       data: updatedMember,
+//       message: "Мэдээлэл амжилттай шинэчлэгдлээ",
+//     });
+//   } catch (error) {
+//     console.error("Update profile error:", error);
+//     return NextResponse.json(
+//       { error: "Мэдээллийг шинэчлэхэд алдаа гарлаа" },
+//       { status: 500 },
+//     );
+//   }
+// }
+
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
@@ -59,7 +95,18 @@ export async function PATCH(
   try {
     const { id } = await params;
     const body = await request.json();
-    const { name, role, department, phone, bio, github, location } = body;
+    // skills болон avatarUrl-ийг энд нэмж авна
+    const {
+      name,
+      role,
+      department,
+      phone,
+      bio,
+      github,
+      location,
+      skills,
+      avatarUrl,
+    } = body;
 
     const updatedMember = await prisma.teamMember.update({
       where: { id },
@@ -71,6 +118,8 @@ export async function PATCH(
         bio,
         github,
         location,
+        skills, // <--- Энд нэмэх
+        avatarUrl, // <--- Энд мөн нэмэх
       },
     });
 

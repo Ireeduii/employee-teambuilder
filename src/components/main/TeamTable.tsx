@@ -22,30 +22,45 @@ export const TeamTable: React.FC<TeamTableProps> = ({
     setMemberList(initialMembers);
   }, [initialMembers]);
 
+  // const filteredMembers = memberList.filter((member) => {
+  //   const matchesSearch =
+  //     member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //     member.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  //     member.skills?.some((s) =>
+  //       s.toLowerCase().includes(searchTerm.toLowerCase()),
+  //     );
+
+  //   const matchesStatus =
+  //     statusFilter === "All" || member.status === statusFilter;
+
+  //   return matchesSearch && matchesStatus;
+  // });
+
+  // const handleDelete = async (id: string) => {
+  //   try {
+  //     const res = await fetch(`/api/team/${id}`, { method: "DELETE" });
+  //     if (res.ok) {
+  //       setMemberList((prev) => prev.filter((m) => m.id !== id));
+  //       if (onDeleteSuccess) onDeleteSuccess();
+  //     }
+  //   } catch (err) {
+  //     console.error("Delete error:", err);
+  //   }
   const filteredMembers = memberList.filter((member) => {
-    const matchesSearch =
-      member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      member.role.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      member.skills?.some((s) =>
-        s.toLowerCase().includes(searchTerm.toLowerCase()),
-      );
+    // null/undefined байж магадгүй тул аюулгүй байдлаар шалгах
+    const nameMatch = member.name?.toLowerCase().includes(searchTerm.toLowerCase()) || false;
+    const roleMatch = member.role?.toLowerCase().includes(searchTerm.toLowerCase()) || false;
+    const skillsMatch = member.skills?.some((s) =>
+      s.toLowerCase().includes(searchTerm.toLowerCase()),
+    ) || false;
+
+    const matchesSearch = nameMatch || roleMatch || skillsMatch;
 
     const matchesStatus =
       statusFilter === "All" || member.status === statusFilter;
 
     return matchesSearch && matchesStatus;
   });
-
-  const handleDelete = async (id: string) => {
-    try {
-      const res = await fetch(`/api/team/${id}`, { method: "DELETE" });
-      if (res.ok) {
-        setMemberList((prev) => prev.filter((m) => m.id !== id));
-        if (onDeleteSuccess) onDeleteSuccess();
-      }
-    } catch (err) {
-      console.error("Delete error:", err);
-    }
   };
 
   return (
