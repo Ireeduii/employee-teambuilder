@@ -101,7 +101,7 @@ export const TeamTable: React.FC<TeamTableProps> = ({
                       alt={m.name}
                       className="w-9 h-9 rounded-full object-cover ring-2 ring-slate-100"
                     />
-                
+
                     <div>
                       <p className="font-semibold text-slate-800 group-hover/item:text-cyan-600 transition-colors">
                         {m.name}

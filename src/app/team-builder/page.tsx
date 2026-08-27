@@ -337,7 +337,7 @@ export default function TeamBuilderPage() {
     fetchMembers();
   }, []);
 
-  // Хайлтын Skill нэмэх/хасах
+  // hailtiin skill nemeh/hasah
   const handleAddSkillFilter = () => {
     if (!skillInput.trim()) return;
     const skill = skillInput.trim();
@@ -351,7 +351,6 @@ export default function TeamBuilderPage() {
     setSelectedSkills(selectedSkills.filter((s) => s !== skill));
   };
 
-  // Сонгосон ур чадварт тохирч буй ажилтнуудыг шүүх
   const filteredMembers = members.filter((member) => {
     if (selectedSkills.length === 0) return true;
     return selectedSkills.every((skill) =>
@@ -367,7 +366,6 @@ export default function TeamBuilderPage() {
     }
   };
 
-  // 3. Багийг Backend рүү хадгалах функц
   const handleSaveTeam = async () => {
     if (selectedMembers.length === 0 || !teamName.trim()) return;
 
@@ -416,9 +414,7 @@ export default function TeamBuilderPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Баруун тал: Шүүлтүүр & Нийт Инженерүүдийн жагсаалт */}
             <div className="lg:col-span-2 space-y-5">
-              {/* Skill Filter Box */}
               <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
                 <label className="block text-sm font-semibold text-slate-800">
                   Шаардлагатай Ур Чадвар (Skill) Нэмж Хайх
@@ -445,7 +441,6 @@ export default function TeamBuilderPage() {
                   </button>
                 </div>
 
-                {/* Tag-үүд */}
                 {selectedSkills.length > 0 && (
                   <div className="flex flex-wrap gap-2 pt-1">
                     {selectedSkills.map((skill) => (
@@ -541,7 +536,6 @@ export default function TeamBuilderPage() {
               </div>
             </div>
 
-            {/* Зүүн тал: Сонгогдсон Шинэ Баг */}
             <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm h-fit space-y-5">
               <div className="flex items-center gap-2.5 border-b border-slate-100 pb-4">
                 <div className="p-2 bg-cyan-50 rounded-xl text-cyan-600">
@@ -614,7 +608,6 @@ export default function TeamBuilderPage() {
                 )}
               </div>
 
-              {/* 4. Товчин дээр handleSaveTeam холбосон */}
               <button
                 disabled={
                   selectedMembers.length === 0 ||

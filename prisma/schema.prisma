@@ -13,7 +13,11 @@ model TeamMember {
   email      String   @unique
   role       String
   department String?
+  phone      String?
   bio        String?
+  github     String?
+  location   String?
+
   skills     String[]
   status     String   @default("Active")
   avatarUrl  String?
