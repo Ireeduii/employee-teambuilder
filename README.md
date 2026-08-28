@@ -1,5 +1,5 @@
-# Team & Skill Map Dashboard
-Modern web application for mapping employee skills, tracking engineering metrics and managing team members.
+## Team & Skill Map Dashboard
+Modern web  for mapping employee skills, tracking engineering metrics and managing team members.
 
 ## Tech Stack
   * Framework: Next.js(app router)
