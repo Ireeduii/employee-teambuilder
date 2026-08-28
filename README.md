@@ -17,6 +17,6 @@ Modern web  for mapping employee skills, tracking engineering metrics and managi
     
 ## Getting started
   * https://github.com/Ireeduii/employee-teambuilder.git   
-  * cd-teambuilder
+  * cd employee-teambuilder
   * npm install
   * npm run dev
