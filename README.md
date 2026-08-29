@@ -7,6 +7,7 @@ Modern web  for mapping employee skills, tracking engineering metrics and managi
   * Styling: Tailwind CSS
   * Database & ORM: PostgreSQL, Prisma ORM
   * Authentication: Clerk Auth
+  * Deployment: Vercel
 
 ## Features
   * Dynamic Metrics: Real-time calculating of total engineers, active members and unique skills.
